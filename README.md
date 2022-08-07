@@ -101,3 +101,7 @@ This repository contains an example implementation of design option `1. Visual`.
 ![nft_hierarchy_membership dao_screenshot_01](./packages/react-app/public/nft_hierarchy_membership_dao_screenshot_01.png?raw=true 'Minimal_DAO_01')
 
 * [smart contract](./packages/hardhat/contracts/DAOMembershipToken.sol)
+
+## License
+
+MIT
