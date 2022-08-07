@@ -3,7 +3,7 @@
 An Ethereum DAO where:
 * memberships are tracked through non-transferable ERC1155 NFTs (eg. [soulbound tokens](https://vitalik.ca/general/2022/01/26/soulbound.html))
 * membership levels/ranks are tracked via an ERC20 reputation token
-* the membership level/rank is part of the NFT
+* membership levels/ranks are part of the NFT
 
 ![nft_hierarchy_membership dao_screenshot_01](./packages/react-app/public/nft_hierarchy_membership_dao_screenshot_01.png?raw=true 'Minimal_DAO_01')
 
