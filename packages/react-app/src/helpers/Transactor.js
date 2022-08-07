@@ -60,10 +60,8 @@ export default function Transactor(providerOrSigner, gasPrice, etherscan) {
       try {
         let result;
         if (tx instanceof Promise) {
-          console.log('here');
           if (DEBUG) console.log('AWAITING TX', tx);
           result = await tx;
-          console.log({ result });
         } else {
           if (!tx.gasPrice) {
             tx.gasPrice = gasPrice || ethers.utils.parseUnits('4.1', 'gwei');

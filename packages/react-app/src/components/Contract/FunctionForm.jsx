@@ -210,9 +210,7 @@ export default function FunctionForm({ contractFunction, functionInfo, provider,
       // overrides.gasLimit = hexlify(1200000);
 
       // console.log("Running with extras",extras)
-      console.log('das2');
       const returned = await tx(contractFunction(...args, overrides));
-      console.log({ returned });
       handleForm(returned);
       result = tryToDisplay(returned);
     }
