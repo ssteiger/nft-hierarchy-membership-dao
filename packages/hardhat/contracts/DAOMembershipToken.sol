@@ -88,7 +88,7 @@ contract DAOMembershipToken is
         return _reputationLevelBaseUris[index];
     }
 
-    // TODO: add onlyRole(DEFAULT_ADMIN_ROLE)
+    // TODO: add onlyOwner modifier
     function mint(
         address to,
         uint256 id,
