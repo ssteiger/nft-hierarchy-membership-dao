@@ -5,7 +5,9 @@ An Ethereum DAO where:
 * membership levels/ranks are tracked via an ERC20 reputation token
 * the membership level/rank is part of the NFT
 
-## Possible designs
+![nft_hierarchy_membership dao_screenshot_01](./packages/react-app/public/nft_hierarchy_membership_dao_screenshot_01.png?raw=true 'Minimal_DAO_01')
+
+## Possible implementations
 
 There are two possible ways of implementing something like this:
 
@@ -29,6 +31,8 @@ function tokenUri(uint265 _token) {
 NOTE: Most wallets and NFT websites only fetch the image of a NFT at mint time (listening for mint events) and require manual interaction to update cached images.
 
 This means that with this strategy, the membership level representation may not be correct/up-to-date across all plattforms at all times.
+
+An example smart contract implementation can be found [here](./packages/hardhat/contracts/DAOMembershipToken.sol).
 
 ### 2. Using `mint()` or `burn()`
 
@@ -89,3 +93,11 @@ and minting the next NFT level through:
   or
 
   2. burning reputation tokens
+
+## Example implementation
+
+This repository contains an example implementation of design option `1. Visual`.
+
+![nft_hierarchy_membership dao_screenshot_01](./packages/react-app/public/nft_hierarchy_membership_dao_screenshot_01.png?raw=true 'Minimal_DAO_01')
+
+* [smart contract](./packages/hardhat/contracts/DAOMembershipToken.sol)
