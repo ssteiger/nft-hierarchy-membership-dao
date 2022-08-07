@@ -7,6 +7,24 @@ An Ethereum DAO where:
 
 ![nft_hierarchy_membership dao_screenshot_01](./packages/react-app/public/nft_hierarchy_membership_dao_screenshot_01.png?raw=true 'Minimal_DAO_01')
 
+## Setup
+
+```bash
+# install dependencies
+$ yarn
+
+# 1. Terminal
+# start local chain
+$ yarn chain
+
+# 2. Terminal
+# deploy contracts
+$ yarn deploy
+
+# start app on localhost:3000
+$ yarn start
+```
+
 ## Possible implementations
 
 There are two possible ways of implementing something like this:
