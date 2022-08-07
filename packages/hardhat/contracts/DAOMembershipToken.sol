@@ -19,6 +19,8 @@ contract DAOMembershipToken is
 {
     uint256 public constant ERC20_REPUTATION_TOKEN_ID = 0;
 
+    uint256 public totalNFTSupply = 0;
+
     mapping(uint256 => address) public tokenIdToOwner;
     mapping(address => bool) public isNFTHolder;
 
@@ -102,6 +104,7 @@ contract DAOMembershipToken is
             // beside reputation token only nfts allowed
             require(amount == 1, "Amount of non reputation token needs to equal 1.");
             require(totalSupply(id) == 0, "Supply of non reputation token needs to equal 0.");
+            totalNFTSupply++;
         }
 
         if (id == ERC20_REPUTATION_TOKEN_ID) {
@@ -127,6 +130,7 @@ contract DAOMembershipToken is
                 // beside reputation token only nfts allowed
                 require(amounts[i] == 1, "Amount of non reputation token needs to equal 1.");
                 require(totalSupply(ids[i]) == 0, "Supply of non reputation token needs to equal 0.");
+                totalNFTSupply++;
             }
         }
 
