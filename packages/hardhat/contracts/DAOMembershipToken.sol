@@ -22,8 +22,8 @@ contract DAOMembershipToken is
     mapping(uint256 => address) public tokenIdToOwner;
     mapping(address => bool) public isNFTHolder;
 
-    uint256[] reputationLevels;
-    string[] reputationLevelBaseUris;
+    uint256[] _reputationLevels;
+    string[] _reputationLevelBaseUris;
 
 
     constructor(
@@ -42,32 +42,32 @@ contract DAOMembershipToken is
         onlyOwner
     {
         require(newReputationLevels.length == newReputationLevelBaseUris.length, "Reputation levels and reputation level baseUris differ in length.");
-        reputationLevels = newReputationLevels;
-        reputationLevelBaseUris = newReputationLevelBaseUris;
+        _reputationLevels = newReputationLevels;
+        _reputationLevelBaseUris = newReputationLevelBaseUris;
     }
 
-    function getReputationLevels()
+    function reputationLevels()
         public
         view
         returns (uint256[] memory)
     {
-        return reputationLevels;
+        return _reputationLevels;
     }
 
-    function getReputationLevelBaseUris()
+    function reputationLevelBaseUris()
         public
         view
         returns (string[] memory)
     {
-        return reputationLevelBaseUris;
+        return _reputationLevelBaseUris;
     }
 
-    function getReputationLevelsCount()
+    function reputationLevelsCount()
         public
         view
         returns (uint256)
     {
-        return reputationLevels.length;
+        return _reputationLevels.length;
     }
 
     function getReputationLevelByIndex(uint256 index)
@@ -75,17 +75,17 @@ contract DAOMembershipToken is
         view
         returns (uint256)
     {
-        require(index < reputationLevels.length, "Reputation level does not exist (out of bounds).");
-        return reputationLevels[index];
+        require(index < _reputationLevels.length, "Reputation level does not exist (out of bounds).");
+        return _reputationLevels[index];
     }
 
-    function getReputationLevelBaseUrisByIndex(uint256 index)
+    function getReputationLevelBaseUriByIndex(uint256 index)
         public
         view
         returns (string memory)
     {
-        require(index < reputationLevelBaseUris.length, "Reputation level baseUri does not exist (out of bounds).");
-        return reputationLevelBaseUris[index];
+        require(index < _reputationLevelBaseUris.length, "Reputation level baseUri does not exist (out of bounds).");
+        return _reputationLevelBaseUris[index];
     }
 
     // TODO: add onlyRole(DEFAULT_ADMIN_ROLE)
@@ -194,19 +194,19 @@ contract DAOMembershipToken is
         address tokenOwner = tokenIdToOwner[tokenId];
         uint256 ownerReputationBalance = balanceOf(tokenOwner, ERC20_REPUTATION_TOKEN_ID);
 
-        for (uint256 i = 0; i < reputationLevels.length - 1; ++i) {
+        for (uint256 i = 0; i < _reputationLevels.length - 1; ++i) {
             if (
-                reputationLevels[i] >= ownerReputationBalance &&
-                reputationLevels[i] <= reputationLevels[i+1]
+                _reputationLevels[i] >= ownerReputationBalance &&
+                _reputationLevels[i] <= _reputationLevels[i+1]
             ) {
-                string memory baseUri = reputationLevelBaseUris[i];
+                string memory baseUri = _reputationLevelBaseUris[i];
                  // TODO: maybe only return reputationLevel_Uri ?
                 return string(abi.encodePacked(baseUri, Strings.toString(tokenId)));
             }
         }
 
-        if (ownerReputationBalance > reputationLevels[reputationLevels.length]) {
-            string memory baseUri = reputationLevelBaseUris[reputationLevelBaseUris.length - 1];
+        if (ownerReputationBalance > _reputationLevels[_reputationLevels.length]) {
+            string memory baseUri = _reputationLevelBaseUris[_reputationLevelBaseUris.length - 1];
             // TODO: maybe only return reputationLevel_Uri ?
             return string(abi.encodePacked(baseUri, Strings.toString(tokenId)));
         }
