@@ -48,7 +48,7 @@ function tokenUri(uint265 _token) {
 
 NOTE: Most wallets and NFT websites only fetch the image of a NFT at mint time (listening for mint events) and require manual interaction to update cached images.
 
-This means that with this strategy, the membership level representation may not be correct/up-to-date across all plattforms at all times.
+This means that with this strategy, the membership level representation may not be correct/up-to-date across all platforms at all times.
 
 An example smart contract implementation can be found [here](./packages/hardhat/contracts/DAOMembershipToken.sol).
 
