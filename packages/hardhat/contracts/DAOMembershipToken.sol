@@ -8,7 +8,8 @@ import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-// NOTE: accounts have a distinct balance for each token id, and non-fungible tokens are implemented by simply minting a single one of them
+// NOTE: accounts have a distinct balance for each token id, and non-fungible tokens 
+//       are implemented by simply minting a single one of them
 //       -> https://docs.openzeppelin.com/contracts/3.x/erc1155#multi-token-standard
 
 contract DAOMembershipToken is
@@ -43,7 +44,10 @@ contract DAOMembershipToken is
         public
         onlyOwner
     {
-        require(newReputationLevels.length == newReputationLevelBaseUris.length, "Reputation levels and reputation level baseUris differ in length.");
+        require(
+            newReputationLevels.length == newReputationLevelBaseUris.length, 
+            "Reputation levels and reputation level baseUris differ in length."
+        );
         _reputationLevels = newReputationLevels;
         _reputationLevelBaseUris = newReputationLevelBaseUris;
     }
@@ -77,7 +81,10 @@ contract DAOMembershipToken is
         view
         returns (uint256)
     {
-        require(index < _reputationLevels.length, "Reputation level does not exist (out of bounds).");
+        require(
+            index < _reputationLevels.length, 
+            "Reputation level does not exist (out of bounds)."
+        );
         return _reputationLevels[index];
     }
 
@@ -86,7 +93,10 @@ contract DAOMembershipToken is
         view
         returns (string memory)
     {
-        require(index < _reputationLevelBaseUris.length, "Reputation level baseUri does not exist (out of bounds).");
+        require(
+            index < _reputationLevelBaseUris.length, 
+            "Reputation level baseUri does not exist (out of bounds)."
+        );
         return _reputationLevelBaseUris[index];
     }
 
